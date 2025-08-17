@@ -15,6 +15,8 @@
       <nav>
         <ul class="flex gap-6">
           <li><a href="#media" class="hover:text-yellow-400">Videos</a></li>
+          <li><a href="#stream" class="hover:text-yellow-400">Stream</a></li>
+          <li><a href="#news" class="hover:text-yellow-400">News</a></li>
           <li><a href="#about" class="hover:text-yellow-400">About</a></li>
           <li><a href="#contact" class="hover:text-yellow-400">Contact</a></li>
         </ul>
@@ -38,38 +40,31 @@
                   allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Spotify Player Below Videos -->
-      <div class="mt-6 flex justify-center">
-        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/3Vv7ZERwqRzBcDio11ME99?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <!-- Stream -->
+  <section id="stream" class="py-16 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">Stream</h2>
+      <iframe style="border-radius:12px; width: 90%; max-width:600px; height:80px;" 
+              src="https://open.spotify.com/embed/artist/3nYlqZk3T7lD6GbLDkbypF" 
+              frameborder="0" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section id="news" class="py-16 px-6 bg-gray-100">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">Latest News</h2>
+      <div id="news-feed" class="space-y-6">
+        <p>Loading latest news...</p>
       </div>
-
-      <!-- WordPress News Feed Below Spotify -->
-    
-  <script>
-    async function loadNews() {
-      const feedUrl = 'https://captainwilberforce.wordpress.com/wp-json/wp/v2/posts?per_page=1';
-      try {
-        const response = await fetch(feedUrl);
-        const posts = await response.json();
-        const container = document.getElementById('news-feed');
-        container.innerHTML = '';
-        if(posts.length > 0) {
-          const post = posts[0];
-          const article = document.createElement('article');
-          article.className = 'mb-6';
-          article.innerHTML = `<h3 class="text-xl font-semibold">${post.title.rendered}</h3><p>${post.excerpt.rendered.replace(/<[^>]+>/g, '')}</p><a href="${post.link}" target="_blank" class="text-blue-500 underline">Read more</a>`;
-          container.appendChild(article);
-        } else {
-          container.innerHTML = '<p>No news available at this time.</p>';
-        }
-      } catch (error) {
-        document.getElementById('news-feed').innerHTML = '<p>Unable to load news at this time.</p>';
-        console.error('Error fetching news:', error);
-      }
-    }
-    loadNews();
-  </script>
+    </div>
+  </section>
 
   <!-- About -->
   <section id="about" class="max-w-5xl mx-auto py-16 px-6">
@@ -101,10 +96,35 @@
     <p>&copy; 2025 Captain Wilberforce. All rights reserved.</p>
   </footer>
 
-  
+  <!-- WordPress News Feed Script -->
+  <script>
+    async function loadNews() {
+      const feedUrl = 'https://captainwilberforce.wordpress.com/wp-json/wp/v2/posts?per_page=1';
+      try {
+        const response = await fetch(feedUrl);
+        const posts = await response.json();
+        const container = document.getElementById('news-feed');
+        container.innerHTML = '';
+        if(posts.length > 0) {
+          const post = posts[0];
+          const article = document.createElement('article');
+          article.className = 'mb-6';
+          article.innerHTML = `
+            <h3 class="text-xl font-semibold">${post.title.rendered}</h3>
+            <p>${post.excerpt.rendered.replace(/<[^>]+>/g, '')}</p>
+            <a href="${post.link}" target="_blank" class="text-blue-500 underline">Read more</a>
+          `;
+          container.appendChild(article);
+        } else {
+          container.innerHTML = '<p>No news available at this time.</p>';
+        }
+      } catch (error) {
+        container.innerHTML = '<p>Unable to load news at this time.</p>';
+        console.error('Error fetching news:', error);
+      }
+    }
+    loadNews();
+  </script>
 
 </body>
 </html>
-
-
-
