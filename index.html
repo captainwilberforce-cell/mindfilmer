@@ -72,7 +72,7 @@ async function loadNews() {
     const container = document.getElementById("news-feed");
     container.innerHTML = "";
 
-    data.items.slice(0, 3).forEach(post => {
+    data.items.slice(0, 1).forEach(post => {
       const article = document.createElement("article");
       article.className = "border-b border-gray-300 pb-4";
 
@@ -132,5 +132,6 @@ loadNews();
 
 </body>
 </html>
+
 
 
