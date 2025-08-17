@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,26 +15,39 @@
       <h1 class="text-2xl font-bold">Captain Wilberforce</h1>
       <nav>
         <ul class="flex gap-6">
+          <li><a href="#media" class="hover:text-yellow-400">Videos</a></li>
           <li><a href="#about" class="hover:text-yellow-400">About</a></li>
-          <li><a href="#music" class="hover:text-yellow-400">Music</a></li>
+          <li><a href="#music" class="hover:text-yellow-400">Discography</a></li>
           <li><a href="#news" class="hover:text-yellow-400">News</a></li>
-          <li><a href="#media" class="hover:text-yellow-400">Media</a></li>
           <li><a href="#contact" class="hover:text-yellow-400">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="bg-cover bg-center h-96 flex items-center justify-center text-center text-white"
+  <!-- Hero / Featured Single -->
+  <section class="bg-cover bg-center h-80 flex items-center justify-center text-center text-white"
     style="background-image:url('https://www.captainwilberforce.com/wp-content/uploads/2020/07/CW2020Band-1024x683.jpg')">
     <div class="bg-black bg-opacity-60 p-8 rounded-xl">
-      <h2 class="text-4xl md:text-6xl font-bold">New Single Out Now</h2>
+      <h2 class="text-4xl md:text-5xl font-bold">New Single Out Now</h2>
       <p class="mt-2 text-lg">🎵 The Installation (Oct 2024)</p>
       <a href="https://captainwilberforce.bandcamp.com" target="_blank" 
          class="mt-4 inline-block bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-500">
         Listen on Bandcamp
       </a>
+    </div>
+  </section>
+
+  <!-- Media (Now at the top) -->
+  <section id="media" class="bg-gray-100 py-16 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">Videos</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/Zidn6PvJEa4" 
+          title="YouTube video" frameborder="0" allowfullscreen></iframe>
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUR-VIDEO-ID" 
+          title="YouTube video" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   </section>
 
@@ -51,8 +65,8 @@
     </p>
   </section>
 
-  <!-- Music -->
-  <section id="music" class="bg-gray-100 py-16 px-6">
+  <!-- Music / Discography -->
+  <section id="music" class="py-16 px-6 bg-gray-50">
     <div class="max-w-5xl mx-auto">
       <h2 class="text-3xl font-bold mb-6">Discography</h2>
       <ul class="list-disc list-inside space-y-2">
@@ -87,19 +101,6 @@
       <h3 class="text-xl font-semibold">May 2025 – Band Updates</h3>
       <p>Geoff Doig joins on bass, Oli Moor departs. Simon is performing solo acoustic shows in Leeds and Liverpool, including Northern Guitars and Cavern Club.</p>
     </article>
-  </section>
-
-  <!-- Media -->
-  <section id="media" class="bg-gray-100 py-16 px-6">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6">Media</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/Zidn6PvJEa4" 
-          title="YouTube video" frameborder="0" allowfullscreen></iframe>
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUR-VIDEO-ID" 
-          title="YouTube video" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
   </section>
 
   <!-- Contact -->
