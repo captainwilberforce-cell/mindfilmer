@@ -45,11 +45,31 @@
       </div>
 
       <!-- WordPress News Feed Below Spotify -->
-      <div id="news-feed" class="mt-12 space-y-6">
-        <p>Loading latest news...</p>
-      </div>
-    </div>
-  </section>
+    
+  <script>
+    async function loadNews() {
+      const feedUrl = 'https://captainwilberforce.wordpress.com/wp-json/wp/v2/posts?per_page=1';
+      try {
+        const response = await fetch(feedUrl);
+        const posts = await response.json();
+        const container = document.getElementById('news-feed');
+        container.innerHTML = '';
+        if(posts.length > 0) {
+          const post = posts[0];
+          const article = document.createElement('article');
+          article.className = 'mb-6';
+          article.innerHTML = `<h3 class="text-xl font-semibold">${post.title.rendered}</h3><p>${post.excerpt.rendered.replace(/<[^>]+>/g, '')}</p><a href="${post.link}" target="_blank" class="text-blue-500 underline">Read more</a>`;
+          container.appendChild(article);
+        } else {
+          container.innerHTML = '<p>No news available at this time.</p>';
+        }
+      } catch (error) {
+        document.getElementById('news-feed').innerHTML = '<p>Unable to load news at this time.</p>';
+        console.error('Error fetching news:', error);
+      }
+    }
+    loadNews();
+  </script>
 
   <!-- About -->
   <section id="about" class="max-w-5xl mx-auto py-16 px-6">
@@ -81,32 +101,9 @@
     <p>&copy; 2025 Captain Wilberforce. All rights reserved.</p>
   </footer>
 
-  <!-- WordPress News Feed Script -->
-  <script>
-    async function loadNews() {
-      const feedUrl = 'https://captainwilberforce.wordpress.com/wp-json/wp/v2/posts?per_page=1';
-      try {
-        const response = await fetch(feedUrl);
-        const posts = await response.json();
-        const container = document.getElementById('news-feed');
-        container.innerHTML = '';
-        if(posts.length > 0) {
-          const post = posts[0];
-          const article = document.createElement('article');
-          article.className = 'mb-6';
-          article.innerHTML = `<h3 class="text-xl font-semibold">${post.title.rendered}</h3><p>${post.excerpt.rendered.replace(/<[^>]+>/g, '')}</p><a href="${post.link}" target="_blank" class="text-blue-500 underline">Read more</a>`;
-          container.appendChild(article);
-        } else {
-          container.innerHTML = '<p>No news available at this time.</p>';
-        }
-      } catch (error) {
-        document.getElementById('news-feed').innerHTML = '<p>Unable to load news at this time.</p>';
-        console.error('Error fetching news:', error);
-      }
-    }
-    loadNews();
-  </script>
+  
 
 </body>
 </html>
+
 
